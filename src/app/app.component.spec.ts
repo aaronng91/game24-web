@@ -1,33 +1,35 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 import { AppComponent } from './app.component';
+import { CardComponent } from './card/card.component';
 
 describe('App: Game24', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+    let fixture: ComponentFixture<AppComponent>;
+    let app: AppComponent;
+    let element: DebugElement;
+
+    // Need to async as component requires loading of external html & css before component can be created
+    // https://angular.io/docs/ts/latest/guide/testing.html#!#component-with-external-template
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                AppComponent,
+                CardComponent
+            ],
+        })
+        .compileComponents()
+        .then(() => {
+            fixture = TestBed.createComponent(AppComponent);
+            fixture.detectChanges();
+            // Access the dependency injected component instance
+            app = fixture.componentInstance;
+            // Access the element
+            element = fixture.debugElement;
+        });
+    }));
+
+    it('should have 4 cards', () => {
+        expect(element.queryAll(By.css('app-card')).length).toEqual(4);
     });
-  });
-
-  it('should create the app', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-
-  it(`should have as title 'app works!'`, async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app works!');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('app works!');
-  }));
 });

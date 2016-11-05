@@ -1,0 +1,8 @@
+div {
+    text-align: center;
+    font-size: 5em;
+    width: 49vw;
+    height: 50vh;
+    line-height: 50vh;
+    display: inline-block;
+}
