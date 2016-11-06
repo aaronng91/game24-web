@@ -1,8 +1,8 @@
 div {
     text-align: center;
     font-size: 5em;
-    width: 49vw;
+    width: 50vw;
     height: 50vh;
+    flex: 1;
     line-height: 50vh;
-    display: inline-block;
 }
