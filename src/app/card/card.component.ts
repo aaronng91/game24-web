@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Card } from '../models/card.model';
 import { CardService } from './card.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { CardService } from './card.service';
 })
 
 export class CardComponent implements OnInit {
-  cards$: Observable<Array<Card>>;
+  cards$: Observable<number[]>;
 
   constructor(private cardService: CardService) { }
 

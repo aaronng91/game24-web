@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="card">{{(cards$ | async)[0].shownValue}}</div>
-    <div class="card">{{(cards$ | async)[1].shownValue}}</div>
+    <div class="card">{{(cards$ | async)[0] | card}}</div>
+    <div class="card">{{(cards$ | async)[1] | card}}</div>
 </div>
 <div class="row">
-    <div class="card">{{(cards$ | async)[2].shownValue}}</div>
-    <div class="card">{{(cards$ | async)[3].shownValue}}</div>
+    <div class="card">{{(cards$ | async)[2] | card}}</div>
+    <div class="card">{{(cards$ | async)[3] | card}}</div>
 </div>

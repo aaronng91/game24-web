@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
 import { CardService } from './card/card.service';
+import { CardPipe } from './card/card.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
+    CardPipe,
   ],
   imports: [
     BrowserModule,

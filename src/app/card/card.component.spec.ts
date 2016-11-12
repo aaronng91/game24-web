@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { Card } from '../models/card.model';
 import { CardComponent } from './card.component';
 import { CardService } from './card.service';
+import { CardPipe } from './card.pipe';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -13,18 +13,19 @@ describe('CardComponent', () => {
 
   beforeEach(async(() => {
     // Creating mock cardService
-    let cards: Array<Card> = new Array(
-      new Card(1, 'A'),
-      new Card(2, '2'),
-      new Card(3, '3'),
-      new Card(4, '4'));
+    let cards: number[] = [1, 2, 3, 4];
     let mockService: any = {
       'cards$': (new BehaviorSubject(cards)).asObservable()
     };
 
     TestBed.configureTestingModule({
-      declarations: [CardComponent],
-      providers: [{ provide: CardService, useValue: mockService }]
+      declarations: [
+        CardComponent,
+        CardPipe,
+        ],
+      providers: [
+        { provide: CardService, useValue: mockService }
+        ]
     })
       .compileComponents()
       .then(() => {
