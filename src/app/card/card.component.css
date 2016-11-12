@@ -1,4 +1,9 @@
-div {
+.row {
+    width: 100vw;
+    display: flex;
+}
+
+.card {
     text-align: center;
     font-size: 5em;
     width: 50vw;

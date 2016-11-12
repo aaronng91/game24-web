@@ -1,6 +1,6 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
 
@@ -28,8 +28,4 @@ describe('App: Game24', () => {
             element = fixture.debugElement;
         });
     }));
-
-    it('should have 4 cards', () => {
-        expect(element.queryAll(By.css('app-card')).length).toEqual(4);
-    });
 });
