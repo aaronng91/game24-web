@@ -1,0 +1,7 @@
+<div class="panel" [class.verify]="verify">
+    <button *ngIf="!verify" class="center" (click)="gotIt()">Got it!</button>
+    <div *ngIf="verify" class="center verifyButtons">
+        <button (click)="correct()">Correct</button>
+        <button (click)="wrong()">Wrong</button>
+    </div>
+</div>

@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
+import { TapComponent } from './tap/tap.component';
 import { CardService } from './card/card.service';
 import { CardPipe } from './card/card.pipe';
 
@@ -12,6 +13,7 @@ import { CardPipe } from './card/card.pipe';
   declarations: [
     AppComponent,
     CardComponent,
+    TapComponent,
     CardPipe,
   ],
   imports: [
