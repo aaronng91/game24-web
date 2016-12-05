@@ -7,5 +7,6 @@ describe('Pipe: Card', () => {
     expect(pipe.transform(2)).toEqual('2');
     expect(pipe.transform(10)).toEqual('10');
     expect(pipe.transform(11)).toEqual('J');
+    expect(pipe.transform(null)).toEqual('');
   });
 });

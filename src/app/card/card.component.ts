@@ -16,9 +16,6 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.cards$ = this.cardService.cards$;
-  }
-
-  refresh() {
-    this.cardService.refreshCards();
+    this.cardService.fetchCards();
   }
 }

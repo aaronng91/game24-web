@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { CardService } from '../card/card.service';
 
@@ -7,26 +7,10 @@ import { CardService } from '../card/card.service';
   templateUrl: './tap.component.html',
   styleUrls: ['./tap.component.css']
 })
-export class TapComponent implements OnInit {
-  verify: boolean;
-
+export class TapComponent {
   constructor(private cardService: CardService) {}
 
-  ngOnInit() {
-    this.verify = false;
-  }
-
-  gotIt() {
-    this.verify = true;
-  }
-
-  correct() {
+  refresh() {
     this.cardService.refreshCards();
-    this.verify = false;
-  }
-
-  wrong() {
-    this.cardService.refreshCards();
-    this.verify = false;
   }
 }
