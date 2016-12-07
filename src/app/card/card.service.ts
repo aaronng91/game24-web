@@ -8,6 +8,8 @@ import 'rxjs/Rx';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class CardService {
   private stompClient: any;
@@ -19,7 +21,7 @@ export class CardService {
   constructor(private http: Http) {
     this.cardsSubject = new BehaviorSubject<number[]>(this.cards);
     this.cards$ = this.cardsSubject.asObservable();
-    let socket = new SockJS('http://localhost:8080/');
+    let socket = new SockJS(`${environment.baseUrl}`);
     this.stompClient = Stomp.over(socket);
 
     let that = this;
@@ -31,7 +33,7 @@ export class CardService {
   }
 
   fetchCards() {
-    return this.http.get('http://localhost:8080/cards')
+    return this.http.get(`${environment.baseUrl}/cards`)
       .map(response => response.json())
       .subscribe(value => {
         this.cardsSubject.next(value);
