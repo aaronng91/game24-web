@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -18,7 +17,7 @@ export class CardService {
   private cardsSubject: BehaviorSubject<number[]>;
   cards$: Observable<number[]>;
 
-  constructor(private http: Http) {
+  constructor() {
     this.cardsSubject = new BehaviorSubject<number[]>(this.cards);
     this.cards$ = this.cardsSubject.asObservable();
     let socket = new SockJS(`${environment.baseUrl}`);
@@ -30,14 +29,6 @@ export class CardService {
         that.cardsSubject.next(that.toIntArray(message.body));
       });
     });
-  }
-
-  fetchCards() {
-    return this.http.get(`${environment.baseUrl}/cards`)
-      .map(response => response.json())
-      .subscribe(value => {
-        this.cardsSubject.next(value);
-      });
   }
 
   refreshCards() {
