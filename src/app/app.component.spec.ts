@@ -1,31 +1,35 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
-
 import { AppComponent } from './app.component';
-import { CardComponent } from './card/card.component';
+import { WebsocketService } from './websocket/websocket.service';
+import { environment } from '../environments/environment';
 
 describe('App: Game24', () => {
-    let fixture: ComponentFixture<AppComponent>;
-    let app: AppComponent;
-    let element: DebugElement;
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+  let mockService: WebsocketService;
 
-    // Need to async as component requires loading of external html & css before component can be created
-    // https://angular.io/docs/ts/latest/guide/testing.html#!#component-with-external-template
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            declarations: [
-                AppComponent,
-                CardComponent
-            ],
-        })
-        .compileComponents()
-        .then(() => {
-            fixture = TestBed.createComponent(AppComponent);
-            fixture.detectChanges();
-            // Access the dependency injected component instance
-            app = fixture.componentInstance;
-            // Access the element
-            element = fixture.debugElement;
-        });
-    }));
+  beforeEach(async(() => {
+    mockService = jasmine.createSpyObj('Fake WebsocketService', ['connect']);
+
+    TestBed.configureTestingModule({
+      declarations: [ AppComponent ],
+      providers: [
+        { provide: WebsocketService, useValue: mockService }
+      ],
+      schemas: [ NO_ERRORS_SCHEMA ]
+    })
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(AppComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+      });
+  }));
+
+  it('should connect to websocket service on init', () => {
+    component.ngOnInit();
+
+    expect(mockService.connect).toHaveBeenCalledWith(`${environment.baseUrl}`);
+  });
 });

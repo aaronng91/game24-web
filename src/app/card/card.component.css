@@ -11,3 +11,9 @@
     flex: 1;
     line-height: 50vh;
 }
+
+.playerId {
+  position: absolute;
+  font-size: 1em;
+  margin: 0.5em;
+}

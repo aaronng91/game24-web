@@ -1,5 +1,4 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { CardService } from './card.service';
 
 describe('Service: Card', () => {
@@ -11,13 +10,12 @@ describe('Service: Card', () => {
     });
   });
 
-  it('should fetch cards from server',
+  it('should properly deserialise cards on incoming message',
     inject([CardService], (service: CardService) => {
+      service.next('[10,1,9,13]');
 
-    }));
-
-  it('should subscribe to server for new sets of card values',
-    inject([CardService], (service: CardService) => {
-
+      service.cards$.subscribe((cards: number[]) => {
+        expect(cards).toEqual([10, 1, 9, 13]);
+      });
     }));
 });
