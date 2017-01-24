@@ -10,7 +10,10 @@ This app will allow a group of friends to play this game together through their 
 
 ## To-Do
 
- - Uniquely identify players
- - Allow player who comes up with an answer first to tap on the screen to score a point
+ - ~~All players to see same set of cards at any given point~~
+ - ~~Allow anyone to refresh set of cards~~
+ - ~~Uniquely identify players~~
+ - Allow player to tap on the screen upon getting an answer
  - Player scoreboard
  - Allow other players to verify that player who tapped first had the correct answer
+ - Properly test WebsocketService
