@@ -1,11 +1,28 @@
-import { browser, element, by } from 'protractor';
+import { by } from 'protractor';
+import { ProtractorBrowser } from '../node_modules/protractor/built/browser';
 
 export class Game24Page {
-  navigateTo() {
-    return browser.get('/');
+  private browser;
+  private element;
+
+  constructor(browser: ProtractorBrowser) {
+    this.browser = browser;
+    this.element = browser.element;
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  navigateTo() {
+    return this.browser.get('/');
+  }
+
+  getCardValues() {
+    return this.element.all(by.css('.card')).map(card => card.getText());
+  }
+
+  getPlayerId() {
+    return this.element(by.css('.playerId')).getText();
+  }
+
+  refresh() {
+    return this.element(by.buttonText('Refresh')).click();
   }
 }
