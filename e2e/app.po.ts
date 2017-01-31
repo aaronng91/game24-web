@@ -19,10 +19,22 @@ export class Game24Page {
   }
 
   getPlayerId() {
-    return this.element(by.css('.playerId')).getText();
+    return this.element(by.css('#player-id')).getText();
   }
 
   refresh() {
-    return this.element(by.buttonText('Refresh')).click();
+    return this.element(by.buttonText('Restart')).click();
+  }
+
+  getGotItButton() {
+    return this.element(by.buttonText('Got It!'));
+  }
+
+  gotIt() {
+    return this.getGotItButton().click();
+  }
+
+  getPlayerWon() {
+    return this.element(by.css('#player-won')).getText();
   }
 }

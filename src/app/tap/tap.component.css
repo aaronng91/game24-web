@@ -1,16 +1,30 @@
 .panel {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 .center {
-    margin: auto;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-    z-index: 1;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 110px;
+  height: 70px;
+  text-align: center;
+  z-index: 1;
+}
+
+.results {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
+#player-won {
+  margin-bottom: 5px;
 }
 
 button {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }

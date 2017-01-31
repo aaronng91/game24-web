@@ -3,6 +3,7 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { CardService } from '../card/card.service';
 import { PlayerService } from '../player/player.service';
+import { TapService } from '../tap/tap.service';
 
 @Injectable()
 export class WebsocketService {
@@ -10,6 +11,7 @@ export class WebsocketService {
   private stompClient: any;
 
   constructor(private cardService: CardService,
+              private tapService: TapService,
               private playerService: PlayerService) { }
 
   connect(address: string) {
@@ -24,6 +26,10 @@ export class WebsocketService {
 
       that.stompClient.subscribe('/topic/playerId', function (message) {
         that.playerService.next(message.body);
+      });
+
+      that.stompClient.subscribe('/topic/gotIt', function (message) {
+        that.tapService.next(message.body);
       });
     });
   }

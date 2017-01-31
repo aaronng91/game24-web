@@ -12,7 +12,7 @@
     line-height: 50vh;
 }
 
-.playerId {
+#player-id {
   position: absolute;
   font-size: 1em;
   margin: 0.5em;

@@ -8,6 +8,7 @@ import { WebsocketService } from './websocket/websocket.service';
 import { CardService } from './card/card.service';
 import { PlayerService } from './player/player.service';
 import { CardPipe } from './card/card.pipe';
+import { TapService } from './tap/tap.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CardPipe } from './card/card.pipe';
   providers: [
     CardService,
     PlayerService,
+    TapService,
     WebsocketService
   ],
   bootstrap: [AppComponent]

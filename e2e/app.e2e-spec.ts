@@ -1,6 +1,5 @@
 import { Game24Page } from './app.po';
 import { browser } from 'protractor';
-import after = testing.after;
 import { ProtractorBrowser } from '../node_modules/protractor/built/browser';
 
 describe('game24 App', function() {
@@ -25,6 +24,7 @@ describe('game24 App', function() {
     let initialCards: number[];
     page.getCardValues().then(values => initialCards = values);
 
+    page.gotIt();
     page.refresh();
 
     page.getCardValues().then(values => {
@@ -51,9 +51,19 @@ describe('game24 App', function() {
     });
 
     it('should have the same set of cards after one session refreshes', () => {
+      page2.gotIt();
       page2.refresh();
 
       expect(page.getCardValues()).toEqual(page2.getCardValues());
+    });
+
+    it('should only allow the first player to tap "Got It" and display player ID', () => {
+      page.gotIt();
+
+      expect(page.getPlayerWon()).toEqual('Player 1 wins!');
+      expect(page2.getPlayerWon()).toEqual('Player 1 wins!');
+      expect(page.getGotItButton().isPresent()).toBeFalsy();
+      expect(page2.getGotItButton().isPresent()).toBeFalsy();
     });
 
     afterEach(() => {
